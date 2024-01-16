@@ -105,31 +105,10 @@ while($row=$result->fetch_assoc()) {
     placeholder="Wprowadź email" name="email" value="'.$row['email'].'"autocomplete="off">';
     ?>
   </div>
-  <div class="form-group">
-    <label >Login</label>
-    <?php
-    echo '<input type="text" class="form-control"
-    placeholder="Wprowadź login" name="login" value="'.$row['login'].'"autocomplete="off">';
-    ?>
-  </div>
- 
-  <div class="form-group">
-    <label >Hasło</label>
-    <?php
-    echo '<input type="text" class="form-control"
-    placeholder="Wprowadź haslo " name="pass" value="'.$row['pass'].'"autocomplete="off">';
-    ?>
-  </div>
-
   <button type="submit" class="btn btn-primary" name="submit">Aktualizuj</button>
 </form>
 </body>
-
 </html>
-
-
-
-
 
 <?php
 

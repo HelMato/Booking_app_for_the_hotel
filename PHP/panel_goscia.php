@@ -13,14 +13,66 @@ session_start();
 <meta charset="utf-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <meta name="viewport" content="width-device-width, initial-scale=1.0">
+
 <title>Witaj w Kiszkowiance!</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
+<style>
+    #images {
+      top: 10px;
+
+      display: flex;
+      justify-content: center;
+      height: 50vh; 
+      padding: 10px 10px 10px 10px;
+      border: 2.66667px;
+      margin: 10px 10px; 
+    }
+    .boxy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    padding: 10px;
+    margin: 10px;
+    }
+  </style>
 </head>
 <body>
+
+<div id="images" class="boxy">
+<script>
+    // z tutoriala ze strony https://www.youtube.com/watch?v=4YQ4svkETS0&ab_channel=TraversyMedia
+    var i=0; //indeks startowy
+    var images=[]; //pusta tablica
+    var time= 2000; //ustawia milisekundy miedzy wyswietlaniem obrazkow, czyli 2 sekundy
+
+    images[0]= 'zdj1.jpg';
+    images[1]= 'zdj2.jpg';
+    images[2]= 'zdj3.jpg';
+    images[3]= 'zdj4.jpg';
+// funkcja do zmieniania obrazkow
+
+function changeImg(){
+document.slide.src=images[i];
+if (i<images.length-1){
+i++;
+} else {
+i=0;
+}
+setTimeout("changeImg()", time)
+}
+window.onload=changeImg;
+
+</script>
+
+<img name="slide" width="200" height="200">
+</div>
+
+
 <div class="container my-3 text-center"> 
-
-
 <?php
+if(isset($_SESSION['login'])){
 $login=$_SESSION['login'];
 echo"<p>Witaj"." ".$login."!</p>";
 ?>
@@ -64,8 +116,6 @@ while($row=$result->fetch_assoc()) {
     echo "<td>" . $row['Booking_confirmed'] . "</td>";
 
     echo "<td>";
-  echo "<button class='btn btn-primary'> <a href='rezerwacjapobytu.php?aktualizujid=".$row['Booking_ID']."'class='text-light'>Aktualizuj dane rezerwacji</a> </button>";
-echo "<button class='btn btn-danger'><a href='panel_goscia.php?deleteid=".$row['Booking_ID']."' class='text-light'>Usuń rezerwację</a> </button>";
 
 echo "</td>";
     echo "</tr>";
@@ -78,14 +128,23 @@ $sql="SELECT Person_ID from person where login=?";
 $stmt= $polaczenie->prepare($sql);
 $stmt->execute([$login]);
 $personid= $result=$stmt->get_result()->fetch_assoc()['Person_ID'];
-echo "<button style='margin-right:25px' class='btn btn-primary'> <a href='panel_goscia.php?aktualizujid=".$personid."'class='text-light'> Aktualizuj dane osobowe </a> </button>";
-echo "<button style='margin-right:25px' class='btn btn-primary'> <a href='panel_goscia.php?aktualizujid=".$personid."'class='text-light'> Wyloguj się </a> </button>";
-echo "<button style='margin-right:25px' class='btn btn-primary'> <a href='panel_goscia.php?aktualizujid=".$personid."'class='text-light'> Usuń konto </a> </button>";
+echo "<button style='margin-right:25px' class='btn btn-primary'> <a href='aktualizujmojedane.php' class='text-light'> Aktualizuj dane osobowe </a> </button>";
+echo "<button style='margin-right:25px' class='btn btn-primary'> <a href='wyloguj.php' class='text-light'> Wyloguj się </a> </button>";
+echo "<button style='margin-right:25px' class='btn btn-primary'> <a href='usunkonto.php' class='text-light'> Usuń konto </a> </button>";
 
 ?>
 <p><a href='rezerwacjapobytu.php'>Zarezerwuj pobyt w wybranym terminie</a></p>
-
+<?php
+}
+else {
+  header('Location: index.php');
+}
+?>
 </div>
+
+
+
+
 </body>
 
 </head>

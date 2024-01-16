@@ -71,7 +71,7 @@ if (isset($_GET['aktualizujid'])){
   <form method="post">
   <div class="form-group">
 
-<label for="dane_goscia">Czy rezerwujesz dla siebie?:</label>
+<label for="dane_goscia">Czy rezerwujesz pobyt tylko dla siebie?:</label>
 
 <select name="potwierdz_dane_goscia" id="potwierdz_dane_goscia">
   <option value="tak">Tak</option>
@@ -147,6 +147,7 @@ if (isset($_GET['aktualizujid'])){
 }
 ?>
 </div>
+
 </body>
 
 </html>

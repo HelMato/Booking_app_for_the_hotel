@@ -135,7 +135,7 @@ class Kalendarz
         if ($zawartosckomorki != null) {
             if (array_key_exists($this->obecnadata, $this->ceny)){
                 $cena=$this->ceny[$this->obecnadata];
-            $domki.=$cena." PLN";  
+            $domki.=$cena." PLN ";  
             }
             $wolne = $this->_wolneDomki[$this->obecnadata];
             foreach ($wolne as $kolor)

@@ -8,10 +8,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
 
 <title>Kiszkowianka wiejskie wakacje</title>
+<script src="validation2.js"></script>
+
 </head>
 <body>
     <div class="container my-5"> 
 <?php
+
 /*
 CRUD według instrukcji ze strony
 https://www.youtube.com/watch?v=72U5Af8KUpA&ab_channel=StepbyStep
@@ -22,7 +25,7 @@ require_once "connect.php";
 $polaczenie= @new mysqli($host, $db_user, $db_password, $db_name);
 
 
-if(isset($_POST['submit'])) {
+if(isset($_POST['name'])) {
 
 $name=$_POST['name'];
 $surname=$_POST['surname'];
@@ -59,7 +62,7 @@ else {
 ?>
 
 
-  <form method="POST">
+  <form method="POST" id="formularz_rejestracji">
   <div class="form-group">
     <label >Imię</label>
     <input type="text" class="form-control"
@@ -102,7 +105,7 @@ else {
     placeholder="Wprowadź hasło: limit 12 znaków" name="pass" autocomplete="off">
   </div>
 
-  <button type="submit" class="btn btn-primary" name="submit">Zarejestruj</button>
+  <button type="submit" class="btn btn-primary" name="bsubmit">Zarejestruj</button>
 </form>
 </body>
 

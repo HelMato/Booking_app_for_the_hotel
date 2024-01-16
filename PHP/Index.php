@@ -9,6 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css">
     <link href="kalendarz.css" type="text/css" rel="stylesheet"/>
+    <script src="validation.js"></script>
 </head>
 <body>
    
@@ -20,7 +21,9 @@ Wolne domki:
 </div>  
 
 <?php
+
 include 'connect.php';
+
 include 'kalendarz.php';
 include 'booking.php';
 include 'komorkadorezerwacji.php';
